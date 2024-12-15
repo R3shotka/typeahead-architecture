@@ -1,0 +1,12 @@
+@startuml container-diagram
+
+!define RECTANGLE class
+
+actor WebClient as WC
+entity "Web Server (ASP.NET Core)" as WebServer
+database "Database" as DB
+
+WebClient -- WebServer : "HTTP Requests"
+WebServer -- DB : "SQL Queries"
+
+@enduml
