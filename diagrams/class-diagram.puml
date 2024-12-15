@@ -1,0 +1,27 @@
+@startuml class-diagram
+
+class UserController {
+  +GetUserById(id: int): User
+  +CreateUser(user: User): void
+}
+
+class UserService {
+  +GetUser(id: int): User
+  +CreateUser(user: User): void
+}
+
+class UserRepository {
+  +GetById(id: int): User
+  +Add(user: User): void
+}
+
+class ApplicationDbContext {
+  +Users: DbSet<User>
+  +SaveChanges(): void
+}
+
+UserController -- UserService : uses
+UserService -- UserRepository : uses
+ApplicationDbContext -- UserRepository : contains
+
+@enduml
