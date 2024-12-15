@@ -1,0 +1,20 @@
+@startuml component-diagram
+
+package "API Layer" {
+  [API] 
+}
+
+package "Business Logic" {
+  [UserService]
+}
+
+package "Data Layer" {
+  [UserRepository]
+  [Database]
+}
+
+[API] -- [UserService] : "calls"
+[UserService] -- [UserRepository] : "retrieves data"
+[UserRepository] -- [Database] : "queries"
+
+@enduml
